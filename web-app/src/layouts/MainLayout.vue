@@ -12,8 +12,13 @@
         />
 
         <q-toolbar-title> Ahmed Demirezen </q-toolbar-title>
-
-        <div>{{ time }}</div>
+        <div class="q-pa-md">{{ time }}</div>
+        <q-btn
+          :icon="audio.paused ? 'play_arrow' : 'stop'"
+          dense
+          round
+          @click="toggleSound('static/audio/americana.mp3')"
+        />
       </q-toolbar>
     </q-header>
 
@@ -91,6 +96,7 @@ export default defineComponent({
   },
   data() {
     return {
+      audio: new Audio(),
       time: "",
     };
   },
@@ -105,6 +111,20 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
     };
+  },
+  methods: {
+    toggleSound(sound) {
+      if (sound) {
+        if (this.audio.src == '') {
+          this.audio.src = sound;
+        }
+      }
+      if (this.audio.paused) {
+        this.audio.play();
+      } else {
+        this.audio.pause();
+      }
+    },
   },
 });
 </script>
