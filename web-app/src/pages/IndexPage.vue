@@ -11,10 +11,21 @@
       <Scene ref="scene" background="#a0a0a0">
         <HemisphereLight />
         <AmbientLight />
+        <PointLight
+          :position="{ x: 100, y: 100, z: 100 }"
+          intensity="2"
+          color="rgba(255,0,0,1)"
+        />
+        <PointLight
+          :position="{ x: -100, y: -100, z: 100 }"
+          intensity="2"
+          color="rgba(0,250,0,1)"
+        />
         <DirectionalLight
           :position="{ x: 0, y: 200, z: 100 }"
           cast-shadow
           :shadow-camera="{ top: 180, bottom: -120, left: -120, right: 120 }"
+          :intensity="0.5"
         />
 
         <!-- <Plane
@@ -37,6 +48,7 @@
 import { AnimationMixer, Clock, Fog, GridHelper, Vector3 } from "three";
 import {
   AmbientLight,
+  PointLight,
   Camera,
   DirectionalLight,
   FbxModel,
@@ -47,6 +59,7 @@ import {
 export default {
   components: {
     AmbientLight,
+    PointLight,
     Camera,
     DirectionalLight,
     FbxModel,
@@ -61,10 +74,10 @@ export default {
   },
   mounted() {
     const scene = this.$refs.scene.scene;
-    scene.fog = new Fog(0xa0a0a0, 200, 1000);
-    const grid = new GridHelper(2000, 20, 0x000000, 0x000000);
-    grid.material.opacity = 0.5;
-    grid.material.transparent = true;
+    scene.fog = new Fog("red", 200, 1000);
+    const grid = new GridHelper(1000, 500, "red", "cyan");
+    grid.material.opacity = 1;
+    grid.material.transparent = false;
     this.$refs.scene.add(grid);
   },
   methods: {
