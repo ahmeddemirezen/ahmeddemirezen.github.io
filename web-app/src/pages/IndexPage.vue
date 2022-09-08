@@ -62,7 +62,7 @@ export default {
     PointLight,
     Camera,
     DirectionalLight,
-    FbxModel,
+    GltfModel,
     HemisphereLight,
     Renderer,
     Scene,
