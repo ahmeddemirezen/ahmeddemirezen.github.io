@@ -37,7 +37,7 @@
           <PhongMaterial color="#999999" :props="{ depthWrite: false }" />
         </Plane> -->
 
-        <FbxModel src="https://d1a370nemizbjq.cloudfront.net/bcc2fb18-1ac7-49f3-9daa-764bbf8774ca.glb" @load="onLoad" />
+        <GltfModel src="https://d1a370nemizbjq.cloudfront.net/bcc2fb18-1ac7-49f3-9daa-764bbf8774ca.glb" @load="onLoad" />
       </Scene>
     </Renderer>
   </div>
@@ -51,7 +51,7 @@ import {
   PointLight,
   Camera,
   DirectionalLight,
-  FbxModel,
+  GltfModel,
   HemisphereLight,
   Renderer,
   Scene,
